@@ -11,6 +11,115 @@
     <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/tooplate-infinite-loop.css" />
+
+
+
+    <!-- bgm_css -->
+    <style>
+      /* 强制重置，防止被你的原有CSS污染 */
+      #bgm-control-wrapper * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+    
+      #bgm-control-wrapper {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99999; /* 确保在最顶层 */
+        pointer-events: none; /* 让 wrapper 不挡鼠标 */
+      }
+    
+      /* 核心小方块 */
+      #bgm-icon-box {
+        width: 50px;
+        height: 50px;
+        background-color: #335577;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: white;
+        font-size: 22px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        pointer-events: auto; /* 恢复小方块的鼠标事件 */
+        transition: transform 0.2s;
+        user-select: none;
+      }
+      #bgm-icon-box:hover {
+        transform: scale(1.1);
+      }
+    
+      /* 鼠标悬浮提示框 */
+      #bgm-hover-tip {
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        background: rgba(0,0,0,0.8);
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+        pointer-events: none;
+      }
+      #bgm-icon-box:hover + #bgm-hover-tip {
+        opacity: 1;
+        visibility: visible;
+      }
+    
+      /* 展开的面板 */
+      #bgm-expand-panel {
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        width: 260px;
+        background-color: #2c3e50;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        color: #ecf0f1;
+        display: none;
+        pointer-events: auto;
+      }
+      #bgm-expand-panel p {
+        margin: 0 0 12px 0;
+        font-size: 13px;
+        word-break: break-all;
+      }
+      #bgm-expand-panel button {
+        background-color: #34495e;
+        border: none;
+        color: white;
+        padding: 8px 10px;
+        margin-right: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: background 0.2s;
+      }
+      #bgm-expand-panel button:hover {
+        background-color: #465c71;
+      }
+      #bgm-close-btn {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        color: #bdc3c7;
+      }
+      #bgm-close-btn:hover {
+        color: #fff;
+      }
+    </style>
+    <!--  -->
 <!--
 Tooplate 2117 Infinite Loop
 https://www.tooplate.com/view/2117-infinite-loop
@@ -288,263 +397,142 @@ https://www.tooplate.com/view/2117-infinite-loop
     <section id="contact" class="tm-section-pad-top tm-parallax-2">
     
       <div class="container tm-container-contact">
+        <!-- 隐藏的音频播放器 -->
+        <audio id="bgm-audio-tag" preload="auto"></audio>
         
-        <div class="row">
-            
-            <div class="text-center col-12">
-                <h2 class="tm-section-title mb-4">Contact Us</h2>
-                <p class="mb-5">
-                  Proin enim orci, tincidunt quis suscipit in, placerat nec est. Vestibulum posuere faucibus posuere. Quisque aliquam velit eget leo blandit egestas. Nulla id posuere felis, quis tristique nulla.
-                </p><br>
-            </div>
-            
-            <div class="col-sm-12 col-md-6">
-              <form action="" method="get">
-                <input id="name" name="name" type="text" placeholder="Your Name" class="tm-input" required />
-                <input id="email" name="email" type="email" placeholder="Your Email" class="tm-input" required />
-                <textarea id="message" name="message" rows="8" placeholder="Message" class="tm-input" required></textarea>
-                <button type="submit" class="btn tm-btn-submit">Submit</button>
-              </form>
-            </div>
-            
-            <div class="col-sm-12 col-md-6">
-
-                <div class="contact-item">
-                  <a rel="nofollow" href="https://www.tooplate.com/contact" class="item-link">
-                      <i class="far fa-2x fa-comment mr-4"></i>
-                      <span class="mb-0">Chat Online</span>
-                  </a>              
-                </div>
-                
-                <div class="contact-item">
-                  <a rel="nofollow" href="mailto:mail@company.com" class="item-link">
-                      <i class="far fa-2x fa-envelope mr-4"></i>
-                      <span class="mb-0">mail@company.com</span>
-                  </a>              
-                </div>
-                
-                <div class="contact-item">
-                  <a rel="nofollow" href="https://www.google.com/maps" class="item-link">
-                      <i class="fas fa-2x fa-map-marker-alt mr-4"></i>
-                      <span class="mb-0">Our Location</span>
-                  </a>              
-                </div>
-                
-                <div class="contact-item">
-                  <a rel="nofollow" href="tel:0100200340" class="item-link">
-                      <i class="fas fa-2x fa-phone-square mr-4"></i>
-                      <span class="mb-0">255-662-5566</span>
-                  </a>              
-                </div>
-                
-                <div class="contact-item">&nbsp;</div>
-            
-            </div>
-            
-            
-        </div><!-- row ending -->
-        
-      </div>
-
-      	<footer class="text-center small tm-footer">
-          <p class="mb-0">
-          Copyright &copy; 2020 Company Name 
+        <!-- 播放器UI组件 -->
+        <div id="bgm-control-wrapper">
+          <div id="bgm-icon-box">🎵</div>
+          <div id="bgm-hover-tip">双击显示更多</div>
           
-          . <a rel="nofollow" href="https://www.tooplate.com" title="HTML templates">Designed by TOOPLATE</a></p>
-        </footer>
-
-    </section>
-    
-    <script src="js/jquery-1.9.1.min.js"></script>     
-    <script src="slick/slick.min.js"></script>
-    <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/easing.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>     
-    <script src="js/bootstrap.min.js"></script> 
-    <script>
-
-      function getOffSet(){
-        var _offset = 450;
-        var windowHeight = window.innerHeight;
-
-        if(windowHeight > 500) {
-          _offset = 400;
-        } 
-        if(windowHeight > 680) {
-          _offset = 300
-        }
-        if(windowHeight > 830) {
-          _offset = 210;
-        }
-
-        return _offset;
-      }
-
-      function setParallaxPosition($doc, multiplier, $object){
-        var offset = getOffSet();
-        var from_top = $doc.scrollTop(),
-          bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
-        $object.css({"background-position" : bg_css });
-      }
-
-      // Parallax function
-      // Adapted based on https://codepen.io/roborich/pen/wpAsm        
-      var background_image_parallax = function($object, multiplier, forceSet){
-        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-        multiplier = 1 - multiplier;
-        var $doc = $(document);
-        // $object.css({"background-attatchment" : "fixed"});
-
-        if(forceSet) {
-          setParallaxPosition($doc, multiplier, $object);
-        } else {
-          $(window).scroll(function(){          
-            setParallaxPosition($doc, multiplier, $object);
-          });
-        }
-      };
-
-      var background_image_parallax_2 = function($object, multiplier){
-        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-        multiplier = 1 - multiplier;
-        var $doc = $(document);
-        $object.css({"background-attachment" : "fixed"});
+          <div id="bgm-expand-panel">
+            <span id="bgm-close-btn">✖</span>
+            <p id="bgm-song-name">当前播放: 无</p>
+            <div>
+              <button id="btn-toggle-play">暂停</button>
+              <button id="btn-next-song">随机换一首</button>
+            </div>
+          </div>
+        </div>
         
-        $(window).scroll(function(){
-          if($(window).width() > 768) {
-            var firstTop = $object.offset().top,
-                pos = $(window).scrollTop(),
-                yPos = Math.round((multiplier * (firstTop - pos)) - 186);              
 
-            var bg_css = 'center ' + yPos + 'px';
 
-            $object.css({"background-position" : bg_css });
-          } else {
-            $object.css({"background-position" : "center" });
-          }
-        });
-      };
-      
-      $(function(){
-        // Hero Section - Background Parallax
-        background_image_parallax($(".tm-parallax"), 0.30, false);
-        background_image_parallax_2($("#contact"), 0.80);   
-        background_image_parallax_2($("#testimonials"), 0.80);   
+
+
+
+
+
+<!-- bgm_html js -->
+      <script>
+        (function() {
+          // ========== 1. 配置你的音乐列表 ==========
+          // ⚠️ 注意：这里必须填你 /img/bgm/ 文件夹下真实的文件名
+          const musicList = ['ar_vela_composite.mp4','ar_vela_optical.mp4','ar_vela_xray.mp4','bullet_all.mp4','bullet_dm.mp4','bullet_opt.mp4','bullet_xray.mp4','carina.mp4','carina_bottom.mp4','carina_stars.mp4','carina_top.mp4','casa_all.mp4','casa_blastwave.mp4','casa_calcium.mp4','casa_iron.mp4','casa_jet.mp4','casa_silicon.mp4','casa_sulfur.mp4','CDF.mp4','crab_all.mp4','crab_chandra.mp4','crab_chandra_nustar.mp4','crab_ir.mp4','crab_nustar.mp4','crab_opt.mp4','crab_xray.mp4','csc_sonification.mp4','etacar_sonification.mp4','galactic_all.mp4','galactic_ir.mp4','galactic_optical.mp4','gcenter_xray_chandra.mp4','gcenter_xray_chandra_ixpe.mp4','gcenter_xray_ixpe.mp4','m104_all.mp4','m16_all.mp4','m16_optical.mp4','m16_xray.mp4','m31.mp4','m31_montage.mp4','m31_optical.mp4','m31_radio.mp4','m31_uv.mp4','m31_xray.mp4','m51_all_feb5.mp4','m51_ir_feb5.mp4','m51_opt_feb5.mp4','m51_seq_feb20.mp4','m51_uv_feb5.mp4','m51_xray_feb5.mp4','m87jet_sonification.mp4','m87_all.mp4','m87_radio.mp4','m87_xray.mp4','ngc6543_all.mp4','ngc6543_opt (1).mp4','ngc6543_opt.mp4','ngc6543_xray.mp4','perseus_sonification.mp4','raquarii_all.mp4','raquarii_opt.mp4','raquarii_xray.mp4','sgra_eht.mp4','sgra_sonify_comp.mp4','sgra_sonify_ir_mid.mp4','sgra_sonify_ir_near.mp4','sgra_sonify_xray.mp4','sn87a_all.mp4','sn87a_opt.mp4','sn87a_xray.mp4','sonify10_cena.mp4','sonify10_cena_optical.mp4','sonify10_cena_xray_chandra.mp4','sonify10_cena_xray_ixpe.mp4','sonify10_ss433.mp4','sonify10_ss433_ir_radio.mp4','sonify10_ss433_ir_radio_no_stars.mp4','sonify10_ss433_ir_radio_stars.mp4','sonify10_ss433_radio.mp4','sonify10_ss433_xray.mp4','sonify10_wr124.mp4','sonify10_wr124_chandra (1).mp4','sonify10_wr124_chandra.mp4','sonify10_wr124_herschel_wise_spitzer.mp4','sonify10_wr124_jwst.mp4','sonify11_jupiter.mp4','sonify11_jupiter_infrared.mp4','sonify11_jupiter_xray.mp4','sonify11_saturn.mp4','sonify11_saturn_optical.mp4','sonify11_saturn_planet.mp4','sonify11_saturn_rings.mp4','sonify11_saturn_xray.mp4','sonify11_uranus.mp4','sonify11_uranus_optical.mp4','sonify11_uranus_xray.mp4','sonify8_hand.mp4','sonify8_hand_chandra.mp4','sonify8_hand_ixpe.mp4','sonify8_hand_sources.mp4','sonify8_jellyfish.mp4','sonify8_jellyfish_nebula.mp4','sonify8_jellyfish_stars.mp4','sonify8_m74.mp4','sonify8_m74_hst.mp4','sonify8_m74_jwst.mp4','sonify8_m74_xray.mp4','sonify9_30dor.mp4','sonify9_30dor_infrared.mp4','sonify9_30dor_xray.mp4','sonify9_casa.mp4','sonify9_casa_infrared.mp4','sonify9_casa_optical.mp4','sonify9_ngc6872.mp4','sonify9_ngc6872_optical.mp4','sonify9_ngc6872_xray.mp4','southern_ring_miri.mp4','southern_ring_nircam.mp4','southern_ring_nircam_miri.mp4','stephansquintet_all.mp4','stephansquintet_infrared.mp4','stephansquintet_xray.mp4','tycho_all.mp4','tycho_optical.mp4','tycho_spectra.mp4','tycho_xray.mp4','v404cyg.mp4','wasp96b_notes.mp4','wd2_all.mp4','wd2_opt.mp4','wd2_xray.mp4'];
         
-        // Handle window resize
-        window.addEventListener('resize', function(){
-          background_image_parallax($(".tm-parallax"), 0.30, true);
-        }, true);
-
-        // Detect window scroll and update navbar
-        $(window).scroll(function(e){          
-          if($(document).scrollTop() > 120) {
-            $('.tm-navbar').addClass("scroll");
-          } else {
-            $('.tm-navbar').removeClass("scroll");
-          }
-        });
+          // ========== 2. 核心播放逻辑 ==========
+          const audio = document.getElementById('bgm-audio-tag');
+          let lastIndex = -1;
+          let isPlaying = false;
         
-        // Close mobile menu after click 
-        $('#tmNav a').on('click', function(){
-          $('.navbar-collapse').removeClass('show'); 
-        })
-
-        // Scroll to corresponding section with animation
-        $('#tmNav').singlePageNav({
-          'easing': 'easeInOutExpo',
-          'speed': 600
-        });        
+          function playRandomTrack() {
+            if (musicList.length === 0) return;
+            
+            let newIndex;
+            do {
+              newIndex = Math.floor(Math.random() * musicList.length);
+            } while (newIndex === lastIndex && musicList.length > 1);
         
-        // Add smooth scrolling to all links
-        // https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
-        $("a").on('click', function(event) {
-          if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
-
-            $('html, body').animate({
-              scrollTop: $(hash).offset().top
-            }, 600, 'easeInOutExpo', function(){
-              window.location.hash = hash;
+            lastIndex = newIndex;
+            const songName = musicList[newIndex];
+            console.log("playing: ",songName)
+            // 拼接路径
+            audio.src = `/img/bgm/${songName}`;
+            audio.play().then(() => {
+              isPlaying = true;
+              updateUI();
+              document.getElementById('bgm-song-name').textContent = `当前播放: ${songName}`;
+            }).catch(err => {
+              console.log("自动播放被拦截，需用户交互:", err);
             });
-          } // End if
-        });
-
-        // Pop up
-        $('.tm-gallery').magnificPopup({
-          delegate: 'a',
-          type: 'image',
-          gallery: { enabled: true }
-        });
-
-        $('.tm-testimonials-carousel').slick({
-          dots: true,
-          prevArrow: false,
-          nextArrow: false,
-          infinite: false,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: 2
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 2
-              }
-            }, 
-            {
-              breakpoint: 480,
-              settings: {
-                  slidesToShow: 1
-              }                 
-            }
-          ]
-        });
-
-        // Gallery
-        $('.tm-gallery').slick({
-          dots: true,
-          infinite: false,
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          responsive: [
-          {
-            breakpoint: 1199,
-            settings: {
-              slidesToShow: 4,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 991,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
           }
-        ]
-        });
-      });
-    </script>
+        
+          // 播完后随机等待 3~15 秒再播下一首
+          audio.addEventListener('ended', () => {
+            const delay = Math.floor(Math.random() * (15000 - 3000 + 1)) + 3000;
+            setTimeout(playRandomTrack, delay);
+          });
+        
+          // ========== 3. UI 交互逻辑 ==========
+          const iconBox = document.getElementById('bgm-icon-box');
+          const panel = document.getElementById('bgm-expand-panel');
+          const btnToggle = document.getElementById('btn-toggle-play');
+          const btnNext = document.getElementById('btn-next-song');
+          const closeBtn = document.getElementById('bgm-close-btn');
+        
+          // 单击：暂停/播放
+          iconBox.addEventListener('click', () => {
+            if (!audio.src) return; // 还没播放过就不响应
+            if (isPlaying) {
+              audio.pause();
+              isPlaying = false;
+            } else {
+              audio.play();
+              isPlaying = true;
+            }
+            updateUI();
+          });
+        
+          // 双击：展开面板
+          iconBox.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            panel.style.display = 'block';
+          });
+        
+          // 关闭面板
+          closeBtn.addEventListener('click', () => {
+            panel.style.display = 'none';
+          });
+        
+          // 面板内：暂停/播放
+          btnToggle.addEventListener('click', () => {
+            if (isPlaying) {
+              audio.pause();
+              isPlaying = false;
+            } else {
+              audio.play();
+              isPlaying = true;
+            }
+            updateUI();
+          });
+        
+          // 面板内：换一首
+          btnNext.addEventListener('click', () => {
+            playRandomTrack();
+          });
+        
+          function updateUI() {
+            btnToggle.textContent = isPlaying ? '暂停' : '播放';
+          }
+        
+          // ========== 4. 首次触发播放 (绕过浏览器自动播放限制) ==========
+          let hasStarted = false;
+          function tryStartMusic() {
+            if (hasStarted) return;
+            hasStarted = true;
+            playRandomTrack();
+            document.removeEventListener('click', tryStartMusic);
+            document.removeEventListener('keydown', tryStartMusic);
+          }
+          document.addEventListener('click', tryStartMusic);
+          document.addEventListener('keydown', tryStartMusic);
+        
+        })();
+        </script>
+            <!--  -->
+
+
+
+
+
   </body>
 </html>
