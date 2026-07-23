@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Asylum 12</title>
+    <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
+    <link rel="stylesheet" href="slick/slick.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/tooplate-infinite-loop.css" />
+
+
+
+    <!-- bgm_css -->
+    <style>
+      /* 强制重置，防止被你的原有CSS污染 */
+      #bgm-control-wrapper * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+    
+      #bgm-control-wrapper {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99999; /* 确保在最顶层 */
+        pointer-events: none; /* 让 wrapper 不挡鼠标 */
+      }
+    
+      /* 核心小方块 */
+      #bgm-icon-box {
+        width: 50px;
+        height: 50px;
+        background-color: #335577;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: white;
+        font-size: 22px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        pointer-events: auto; /* 恢复小方块的鼠标事件 */
+        transition: transform 0.2s;
+        user-select: none;
+      }
+      #bgm-icon-box:hover {
+        transform: scale(1.1);
+      }
+    
+      /* 鼠标悬浮提示框 */
+      #bgm-hover-tip {
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        background: rgba(0,0,0,0.8);
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+        pointer-events: none;
+      }
+      #bgm-icon-box:hover + #bgm-hover-tip {
+        opacity: 1;
+        visibility: visible;
+      }
+    
+      /* 展开的面板 */
+      #bgm-expand-panel {
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        width: 260px;
+        background-color: #2c3e50;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        color: #ecf0f1;
+        display: none;
+        pointer-events: auto;
+      }
+      #bgm-expand-panel p {
+        margin: 0 0 12px 0;
+        font-size: 13px;
+        word-break: break-all;
+      }
+      #bgm-expand-panel button {
+        background-color: #34495e;
+        border: none;
+        color: white;
+        padding: 8px 10px;
+        margin-right: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: background 0.2s;
+      }
+      #bgm-expand-panel button:hover {
+        background-color: #465c71;
+      }
+      #bgm-close-btn {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        color: #bdc3c7;
+      }
+      #bgm-close-btn:hover {
+        color: #fff;
+      }
+    </style>
+    <!--  -->
+<!--
+Tooplate 2117 Infinite Loop
+https://www.tooplate.com/view/2117-infinite-loop
+-->
+
+  </head>
+  <body>    
+    <!-- Hero section -->
+    <section id="infinite" class="text-white tm-font-big tm-parallax">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">              
+        <div class="container">   
+          <div class="tm-next">
+              <a href="#infinite" class="navbar-brand">Asylum 12</a>
+          </div>             
+            
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars navbar-toggler-icon"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#infinite">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#Welcome">Welcome</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link tm-nav-link" href="#testimonials">Testimonials</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#gallery">Gallery</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#contact">Contact</a>
+              </li>                    
+            </ul>
+          </div>        
+        </div>
+      </nav>
+      
+      <div class="text-center tm-hero-text-container">
+        <div class="tm-hero-text-container-inner">
+            <h2 class="tm-hero-title">Asylum 12</h2>
+            <p class="tm-hero-subtitle">
+              Welcome to the 12th Asylum!
+              <br>This is the official website of Asylum12, but it's still under construction.
+            </p>
+        </div>        
+      </div>
+
+      <div class="tm-next tm-intro-next">
+        <a href="#Welcome" class="text-center tm-down-arrow-link">
+          <i class="fas fa-2x fa-arrow-down tm-down-arrow"></i>
+        </a>
+      </div>      
+    </section>
+
+    <section id="Welcome" class="tm-section-pad-top">
+      
+      <div class="container">
+
+            <div class="row tm-content-box justify-content-center"><!-- first row -->
+                <div class="col-lg-10 col-xl-8">
+                    <div class="tm-intro-text-container">
+                        <h2 class="tm-text-primary mb-4 tm-section-title">Welcome</h2>
+                        <p class="mb-4 tm-intro-text">
+                          We are delighted to see you here,dear patient,as we have been waiting for you for a long time.You may relax,for this is a safe haven for our kind.There is no need to worry about your little ‘condition’ anymore.Our medical team has specially tailored an exclusive rehabilitation program just for you. Please be assured that we will put our best efforts into improving your physical and mental health.No forms or payment is required beforehand —we have taken care of those unimportant issues.
+                          <br><br>
+                          The only thing asked of you,my dear,is to follow a few simple rules.Please remember that this is a private institution,using the most cutting edge treatments.Some of these methods are special to this place, so kindly do not mention them to anyone outside the 12th asylum.Don’t be afraid.None of the said treatments are dangerous,as long as you take them without struggle.We have some of the best therapists and psychologists working on cases such as yourself.Do not disobey us,or we will be forced to readjust your scheduled treatments.Most importantly,the main building has and only has 17 floors.If you see any patients from the 18th floor,report to a doctor immediately.All of them wear badges inscribed with serial numbers starting with 00.Never go to any floors above your assigned level.The patients living above you are rather more unstable.Socializing with them may worsen your own condition.
+                          <br><br>
+                          Dear patient,one final notice.Do not attempt to leave the 12th asylum.You are much safer with us than outside with those who do not see,who cannot dream to be who you are—who we are.Of course you won’t mind staying with us forever,right? We are the only ones who will accept you as you are. We strive to help you recover what you have lost,and find who you were always meant to be.Enjoy your permanent stay at the 12th asylum,my dear.We wish you a safe and pleasant recovery.
+                        </p>
+                    </div>
+                </div>
+
+            </div><!-- first row -->
+            
+            <div class="row tm-content-box"><!-- second row -->
+        		<div class="col-lg-1">
+                    <i class="far fa-3x fa-chart-bar text-center tm-icon"></i>
+                </div>
+                <div class="col-lg-5">
+                    <div class="tm-intro-text-container">
+                        <h2 class="tm-text-primary mb-4">Market Analysis</h2>
+                        <p class="mb-4 tm-intro-text">
+                          Praesent sed pharetra lorem, blandit convallis mi. Aenean ornare elit ac metus lacinia, sed iaculis nibh semper. Pellentesque est urna.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-1">
+                    <i class="far fa-3x fa-comment-alt text-center tm-icon"></i>
+                </div>
+                <div class="col-lg-5">
+                    <div class="tm-intro-text-container">
+                        <h2 class="tm-text-primary mb-4">Fast Support</h2>
+                        <p class="mb-4 tm-intro-text">
+                          Credit goes to <a rel="nofollow" href="https://www.pexels.com">Pexels</a> website for all images used in this template. Cras condimentum mi et sapien dignissim luctus.</p>
+                    </div>
+                </div>
+
+            </div><!-- second row -->
+            
+            <div class="row tm-content-box"><!-- third row -->
+        		<div class="col-lg-1">
+                    <i class="fas fa-3x fa-fingerprint text-center tm-icon"></i>
+                </div>
+                <div class="col-lg-5">
+                    <div class="tm-intro-text-container">
+                        <h2 class="tm-text-primary mb-4">Top Security</h2>
+                        <p class="mb-4 tm-intro-text">
+                      You have <strong>no</strong> authority to post this template as a ZIP file on your template collection websites. You can <strong>use</strong> this template for your commercial websites.</p>
+                          
+                          <div class="tm-continue">
+                            <a href="#testimonials" class="tm-intro-text tm-btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-1">
+                    <i class="fas fa-3x fa-users text-center tm-icon"></i>
+                </div>
+                <div class="col-lg-5">
+                    <div class="tm-intro-text-container">
+                      <h2 class="tm-text-primary mb-4">Social Work</h2>
+                        <p class="mb-4 tm-intro-text">
+                      You can change <a href="https://fontawesome.com/icons?d=gallery">Font Awesome icons</a> by either <b><em>fas or far</em></b> in the HTML codes. For Examples:<br>
+                      <em>&lt;i class=&quot;fas fa-users&quot;&gt;&lt;i class=&quot;far fa-chart-bar&quot;&gt;</em> </p>
+                          
+                          <div class="tm-continue">
+                            <a href="#testimonials" class="tm-intro-text tm-btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- third row -->
+
+        </div>
+      
+    </section>
+    
+    <section id="testimonials" class="tm-section-pad-top tm-parallax-2">      
+      <div class="container tm-testimonials-content">
+        <div class="row">
+          <div class="col-lg-12 tm-content-box">
+            <h2 class="text-white text-center mb-4 tm-section-title">Testimonials</h2>
+            <p class="mx-auto tm-section-desc text-center">
+                Nulla dictum sem non eros euismod, eu placerat tortor lobortis. Suspendisse id velit eu libero pellentesque interdum. Etiam quis congue eros.
+              </p>
+            <div class="mx-auto tm-gallery-container tm-gallery-container-2">
+              <div class="tm-testimonials-carousel">
+                <figure class="tm-testimonial-item">
+                  <img src="img/testimonial-img-01.jpg" alt="Image" class="img-fluid mx-auto">
+                  <blockquote>This background image includes a semi-transparent overlay layer. This section also has a parallax image effect.</blockquote>
+                  <figcaption>Catherine Win (Designer)</figcaption>
+                </figure>
+
+                <figure class="tm-testimonial-item">
+                  <img src="img/testimonial-img-02.jpg" alt="Image" class="img-fluid mx-auto">
+                  <blockquote>Testimonial section comes with carousel items. You can use Infinite Loop HTML CSS template for your websites.</blockquote>
+                  <figcaption>Dual Rocker (CEO)</figcaption>
+                </figure>
+
+                <figure class="tm-testimonial-item">
+                  <img src="img/testimonial-img-03.jpg" alt="Image" class="img-fluid mx-auto">
+                  <blockquote>Nulla finibus ligula nec tortor convallis tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus.</blockquote>
+                  <figcaption>Sandar Soft (Marketing)</figcaption>
+                </figure>
+
+                <figure class="tm-testimonial-item">
+                  <img src="img/testimonial-img-04.jpg" alt="Image" class="img-fluid mx-auto">
+                  <blockquote>Curabitur rutrum pharetra lobortis. Pellentesque vehicula, velit quis eleifend fermentum, erat arcu aliquet neque.</blockquote>
+                  <figcaption>Oliva Htoo (Designer)</figcaption>
+                </figure>
+
+                <figure class="tm-testimonial-item">
+                  <img src="img/testimonial-img-02.jpg" alt="Image" class="img-fluid mx-auto">
+                  <blockquote>Integer sit amet risus et erat imperdiet finibus. Nam lacus nunc, vulputate id ex eget, euismod auctor augue.</blockquote>
+                  <figcaption>Jacob Joker (CTO)</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-bg-overlay"></div>
+    </section>
+    
+    <section id="gallery" class="tm-section-pad-top">
+      <div class="container tm-container-gallery">
+        <div class="row">
+          <div class="text-center col-12">
+              <h2 class="tm-text-primary tm-section-title mb-4">Gallery</h2>
+              <p class="mx-auto tm-section-desc">
+                Praesent sed pharetra lorem, blandit convallis mi. Aenean ornare elit ac metus lacinia, sed iaculis nibh semper. Pellentesque est urna, lobortis eu arcu a, aliquet tristique urna.
+              </p>
+          </div>            
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mx-auto tm-gallery-container">
+                    <div class="grid tm-gallery">
+                      <a href="img/gallery-img-01.jpg">
+                        <figure class="effect-honey tm-gallery-item">
+                          <img src="img/gallery-tn-01.jpg" alt="Image 1" class="img-fluid">
+                          <figcaption>
+                            <h2><i>Physical Health <span>Exercise!</span></i></h2>
+                          </figcaption>
+                        </figure>
+                      </a>
+                      <a href="img/gallery-img-02.jpg">
+                        <figure class="effect-honey tm-gallery-item">
+                          <img src="img/gallery-tn-02.jpg" alt="Image 2" class="img-fluid">
+                          <figcaption>
+                            <h2><i>Rain on Glass <span>Second Image</span></i></h2>
+                          </figcaption>
+                        </figure>
+                      </a>
+                      <a href="img/gallery-img-03.jpg">
+                        <figure class="effect-honey tm-gallery-item">
+                          <img src="img/gallery-tn-03.jpg" alt="Image 3" class="img-fluid">
+                          <figcaption>
+                            <h2><i><span>Sea View</span> Mega City</i></h2>
+                          </figcaption>
+                        </figure>
+                      </a>
+                      <a href="img/gallery-img-04.jpg">
+                        <figure class="effect-honey tm-gallery-item">
+                          <img src="img/gallery-tn-04.jpg" alt="Image 4" class="img-fluid">
+                          <figcaption>
+                            <h2><i>Dream Girl <span>Thoughts</span></i></h2>
+                          </figcaption>
+                        </figure>
+                      </a>
+                      <a href="img/gallery-img-05.jpg">
+                        <figure class="effect-honey tm-gallery-item">
+                          <img src="img/gallery-tn-05.jpg" alt="Image 5" class="img-fluid">
+                          <figcaption>
+                            <h2><i><span>Workstation</span> Offices</i></h2>
+                          </figcaption>
+                        </figure>
+                      </a>
+                      <a href="img/gallery-img-06.jpg">
+                        <figure class="effect-honey tm-gallery-item">
+                          <img src="img/gallery-tn-06.jpg" alt="Image 6" class="img-fluid">
+                          <figcaption>
+                            <h2><i>Just Above <span>The City</span></i></h2>
+                          </figcaption>
+                        </figure>
+                      </a>
+                      <a href="img/gallery-img-01.jpg">
+                        <figure class="effect-honey tm-gallery-item">
+                          <img src="img/gallery-tn-01.jpg" alt="Image 7" class="img-fluid">
+                          <figcaption>
+                            <h2><i>Another <span>Exercise Time</span></i></h2>
+                          </figcaption>
+                        </figure>
+                      </a>
+                      <a href="img/gallery-img-02.jpg">
+                        <figure class="effect-honey tm-gallery-item">
+                          <img src="img/gallery-tn-02.jpg" alt="Image 8" class="img-fluid">
+                          <figcaption>
+                            <h2><i>Repeated <span>Image Spot</span></i></h2>
+                          </figcaption>
+                        </figure>
+                      </a>
+                    </div>
+                </div>                
+            </div>        
+          </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="tm-section-pad-top tm-parallax-2">
+    
+      <div class="container tm-container-contact">
+        <!-- 隐藏的音频播放器 -->
+        <audio id="bgm-audio-tag" preload="auto"></audio>
+        
+        <!-- 播放器UI组件 -->
+        <div id="bgm-control-wrapper">
+          <div id="bgm-icon-box">🎵</div>
+          <div id="bgm-hover-tip">双击显示更多</div>
+          
+          <div id="bgm-expand-panel">
+            <span id="bgm-close-btn">✖</span>
+            <p id="bgm-song-name">当前播放: 无</p>
+            <div>
+              <button id="btn-toggle-play">暂停</button>
+              <button id="btn-next-song">随机换一首</button>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+
+
+
+
+<!-- bgm_html js -->
+      <script>
+        (function() {
+          // ========== 1. 配置你的音乐列表 ==========
+          // ⚠️ 注意：这里必须填你 /img/bgm/ 文件夹下真实的文件名
+          const musicList = ['ar_vela_composite.mp4','ar_vela_optical.mp4','ar_vela_xray.mp4','bullet_all.mp4','bullet_dm.mp4','bullet_opt.mp4','bullet_xray.mp4','carina.mp4','carina_bottom.mp4','carina_stars.mp4','carina_top.mp4','casa_all.mp4','casa_blastwave.mp4','casa_calcium.mp4','casa_iron.mp4','casa_jet.mp4','casa_silicon.mp4','casa_sulfur.mp4','CDF.mp4','crab_all.mp4','crab_chandra.mp4','crab_chandra_nustar.mp4','crab_ir.mp4','crab_nustar.mp4','crab_opt.mp4','crab_xray.mp4','csc_sonification.mp4','etacar_sonification.mp4','galactic_all.mp4','galactic_ir.mp4','galactic_optical.mp4','gcenter_xray_chandra.mp4','gcenter_xray_chandra_ixpe.mp4','gcenter_xray_ixpe.mp4','m104_all.mp4','m16_all.mp4','m16_optical.mp4','m16_xray.mp4','m31.mp4','m31_montage.mp4','m31_optical.mp4','m31_radio.mp4','m31_uv.mp4','m31_xray.mp4','m51_all_feb5.mp4','m51_ir_feb5.mp4','m51_opt_feb5.mp4','m51_seq_feb20.mp4','m51_uv_feb5.mp4','m51_xray_feb5.mp4','m87jet_sonification.mp4','m87_all.mp4','m87_radio.mp4','m87_xray.mp4','ngc6543_all.mp4','ngc6543_opt (1).mp4','ngc6543_opt.mp4','ngc6543_xray.mp4','perseus_sonification.mp4','raquarii_all.mp4','raquarii_opt.mp4','raquarii_xray.mp4','sgra_eht.mp4','sgra_sonify_comp.mp4','sgra_sonify_ir_mid.mp4','sgra_sonify_ir_near.mp4','sgra_sonify_xray.mp4','sn87a_all.mp4','sn87a_opt.mp4','sn87a_xray.mp4','sonify10_cena.mp4','sonify10_cena_optical.mp4','sonify10_cena_xray_chandra.mp4','sonify10_cena_xray_ixpe.mp4','sonify10_ss433.mp4','sonify10_ss433_ir_radio.mp4','sonify10_ss433_ir_radio_no_stars.mp4','sonify10_ss433_ir_radio_stars.mp4','sonify10_ss433_radio.mp4','sonify10_ss433_xray.mp4','sonify10_wr124.mp4','sonify10_wr124_chandra.mp4','sonify10_wr124_herschel_wise_spitzer.mp4','sonify10_wr124_jwst.mp4','sonify11_jupiter.mp4','sonify11_jupiter_infrared.mp4','sonify11_jupiter_xray.mp4','sonify11_saturn.mp4','sonify11_saturn_optical.mp4','sonify11_saturn_planet.mp4','sonify11_saturn_rings.mp4','sonify11_saturn_xray.mp4','sonify11_uranus.mp4','sonify11_uranus_optical.mp4','sonify11_uranus_xray.mp4','sonify8_hand.mp4','sonify8_hand_chandra.mp4','sonify8_hand_ixpe.mp4','sonify8_hand_sources.mp4','sonify8_jellyfish.mp4','sonify8_jellyfish_nebula.mp4','sonify8_jellyfish_stars.mp4','sonify8_m74.mp4','sonify8_m74_hst.mp4','sonify8_m74_jwst.mp4','sonify8_m74_xray.mp4','sonify9_30dor.mp4','sonify9_30dor_infrared.mp4','sonify9_30dor_xray.mp4','sonify9_casa.mp4','sonify9_casa_infrared.mp4','sonify9_casa_optical.mp4','sonify9_ngc6872.mp4','sonify9_ngc6872_optical.mp4','sonify9_ngc6872_xray.mp4','southern_ring_miri.mp4','southern_ring_nircam.mp4','southern_ring_nircam_miri.mp4','stephansquintet_all.mp4','stephansquintet_infrared.mp4','stephansquintet_xray.mp4','tycho_all.mp4','tycho_optical.mp4','tycho_spectra.mp4','tycho_xray.mp4','v404cyg.mp4','wasp96b_notes.mp4','wd2_all.mp4','wd2_opt.mp4','wd2_xray.mp4'];
+        
+          // ========== 2. 核心播放逻辑 ==========
+          const audio = document.getElementById('bgm-audio-tag');
+          let lastIndex = -1;
+          let isPlaying = false;
+        
+          function playRandomTrack() {
+            if (musicList.length === 0) return;
+            
+            let newIndex;
+            do {
+              newIndex = Math.floor(Math.random() * musicList.length);
+            } while (newIndex === lastIndex && musicList.length > 1);
+        
+            lastIndex = newIndex;
+            const songName = musicList[newIndex];
+            console.log("playing: ",songName)
+            // 拼接路径
+            audio.src = `/img/bgm/${songName}`;
+            audio.play().then(() => {
+              isPlaying = true;
+              updateUI();
+              document.getElementById('bgm-song-name').textContent = `当前播放: ${songName}`;
+            }).catch(err => {
+              console.log("自动播放被拦截，需用户交互:", err);
+            });
+          }
+        
+          // 播完后随机等待 3~15 秒再播下一首
+          audio.addEventListener('ended', () => {
+            const delay = Math.floor(Math.random() * (15000 - 3000 + 1)) + 3000;
+            setTimeout(playRandomTrack, delay);
+          });
+        
+          // ========== 3. UI 交互逻辑 ==========
+          const iconBox = document.getElementById('bgm-icon-box');
+          const panel = document.getElementById('bgm-expand-panel');
+          const btnToggle = document.getElementById('btn-toggle-play');
+          const btnNext = document.getElementById('btn-next-song');
+          const closeBtn = document.getElementById('bgm-close-btn');
+        
+          // 单击：暂停/播放
+          iconBox.addEventListener('click', () => {
+            if (!audio.src) return; // 还没播放过就不响应
+            if (isPlaying) {
+              audio.pause();
+              isPlaying = false;
+            } else {
+              audio.play();
+              isPlaying = true;
+            }
+            updateUI();
+          });
+        
+          // 双击：展开面板
+          iconBox.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            panel.style.display = 'block';
+          });
+        
+          // 关闭面板
+          closeBtn.addEventListener('click', () => {
+            panel.style.display = 'none';
+          });
+        
+          // 面板内：暂停/播放
+          btnToggle.addEventListener('click', () => {
+            if (isPlaying) {
+              audio.pause();
+              isPlaying = false;
+            } else {
+              audio.play();
+              isPlaying = true;
+            }
+            updateUI();
+          });
+        
+          // 面板内：换一首
+          btnNext.addEventListener('click', () => {
+            playRandomTrack();
+          });
+        
+          function updateUI() {
+            btnToggle.textContent = isPlaying ? '暂停' : '播放';
+          }
+        
+          // ========== 4. 首次触发播放 (绕过浏览器自动播放限制) ==========
+          let hasStarted = false;
+          function tryStartMusic() {
+            if (hasStarted) return;
+            hasStarted = true;
+            playRandomTrack();
+            document.removeEventListener('click', tryStartMusic);
+            document.removeEventListener('keydown', tryStartMusic);
+          }
+          document.addEventListener('click', tryStartMusic);
+          document.addEventListener('keydown', tryStartMusic);
+        
+        })();
+        </script>
+            <!--  -->
+
+
+
+
+
+  </body>
+</html>
